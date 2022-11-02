@@ -6,6 +6,7 @@ import OutlinedInput from "@mui/material/OutlinedInput";
 import Container from "@mui/material/Container";
 import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined';
 import Button from "@mui/material/Button"
+import SearchOutlinedIcon from '@mui/icons-material/SearchOutlined';
 
 function App() {
   const [items, setItems] = useState([]);
@@ -20,7 +21,7 @@ function App() {
   // filtered cards without the elements added to the cart
   const [filteredWithoutCartItems, setFilteredWithoutCartItems] = useState([])
 
-  //
+  // whether the cart is open or not
   const [modalIsOpen, setModalIsOpen] = useState(false);
 
   useEffect(() => {
@@ -91,17 +92,22 @@ function App() {
         <Button onClick={handleOpenModal}><ShoppingCartOutlinedIcon />{cartItems.length}</Button>
         </div>
       </header>
-      <Container className="cards-container">
+
+
+      {/* <Container className="cards-container"> */}
         <Cart cartItems={cartItems} handleCloseModal={handleCloseModal} handleOpenModal={handleOpenModal} modalIsOpen={modalIsOpen}></Cart>
-        {items &&
-          filteredCards &&
-          filteredCards.map((item, index) => {
+        {items && filteredCards &&
+          <body className="App-body">
+          {filteredCards.map((item, index) => {
             return (
               <EventCard item={item} onAdd={onAdd}></EventCard>
             );
           })}
-      </Container>
-    </div>
+          </body>
+          }
+      {/* </Container> */}
+      
+      </div>
   );
 }
 
