@@ -27,8 +27,7 @@
 }
 
 .App-body {
-  background-color: black !important;
-  border: solid 1px black;
+  /* border: solid 1px black; */
   display: flex;
   flex-wrap: wrap;
   align-items: center;
@@ -37,7 +36,6 @@
 
 .event-card {
   color: teal !important;
-  background-color: #f0fef4 !important;
   min-height: 430px;
   min-width: 350px;
   margin: 10px;
@@ -60,7 +58,7 @@
 }
 
 #location-icon {
-  margin-bottom: -5px;
+  margin-bottom: -7px;
   margin-right: 8px;
   cursor: pointer;
 }
@@ -80,6 +78,10 @@
 
 #add-to-cart {
   cursor: pointer;
+}
+
+#card-content {
+  height: 70px;
 }
 
 @keyframes App-logo-spin {

@@ -1,25 +1,23 @@
 import "./App.css";
-import {Cart} from "./Cart.js"
-import {EventCard} from "./EventCard.js"
+import { Cart } from "./Cart.js";
+import { EventCard } from "./EventCard.js";
 import { useEffect, useState } from "react";
 import OutlinedInput from "@mui/material/OutlinedInput";
-import Container from "@mui/material/Container";
-import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined';
-import Button from "@mui/material/Button"
-import SearchOutlinedIcon from '@mui/icons-material/SearchOutlined';
+import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
+import Button from "@mui/material/Button";
 
 function App() {
   const [items, setItems] = useState([]);
-  const [dataIsloaded, setDataIsLoaded] = useState(false);
+  // const [dataIsloaded, setDataIsLoaded] = useState(false);
   // the cards which are going to be shown based on user input
   const [filteredCards, setFilteredCards] = useState([]);
   const [userInput, setUserInput] = useState("");
 
   // the items in the basked
-  const [cartItems, setCartItems] = useState([])
+  const [cartItems, setCartItems] = useState([]);
 
   // filtered cards without the elements added to the cart
-  const [filteredWithoutCartItems, setFilteredWithoutCartItems] = useState([])
+  const [filteredWithoutCartItems, setFilteredWithoutCartItems] = useState([]);
 
   // whether the cart is open or not
   const [modalIsOpen, setModalIsOpen] = useState(false);
@@ -28,9 +26,8 @@ function App() {
     fetch("https://tlv-events-app.herokuapp.com/events/uk/london")
       .then((res) => res.json())
       .then((json) => {
-        // console.log(json)
         setItems(json);
-        setDataIsLoaded(true);
+        // setDataIsLoaded(true);
         // show all events
         setFilteredCards(json);
       });
@@ -52,31 +49,31 @@ function App() {
     // if there is no user input, set filteredCards to all items
     if (userInput === "" && cartItems.length === 0) {
       setFilteredCards(items);
-    } else if(userInput === "" && cartItems.length > 0) {
-      setFilteredCards(filteredWithoutCartItems)
+    } else if (userInput === "" && cartItems.length > 0) {
+      setFilteredCards(filteredWithoutCartItems);
     }
 
     console.log("filtered cards: ", filteredCards);
   };
 
   const onAdd = (item) => {
-    setCartItems([...cartItems, item])
+    setCartItems([...cartItems, item]);
     // exclude the items from filteredCards that have been added into the cart
-    const filteredWithoutCartItems = filteredCards.filter(i => i !== item)
-    setFilteredWithoutCartItems(filteredWithoutCartItems)
-    setFilteredCards(filteredWithoutCartItems)
+    const filteredWithoutCartItems = filteredCards.filter((i) => i !== item);
+    setFilteredWithoutCartItems(filteredWithoutCartItems);
+    setFilteredCards(filteredWithoutCartItems);
 
-    console.log("element added: ", item)
-    console.log("cartItems: ", cartItems)
-  }
+    console.log("element added: ", item);
+    console.log("cartItems: ", cartItems);
+  };
 
   const handleCloseModal = () => {
-    setModalIsOpen(false)
-  }
+    setModalIsOpen(false);
+  };
 
   const handleOpenModal = () => {
-    setModalIsOpen(true)
-  }
+    setModalIsOpen(true);
+  };
 
   return (
     <div className="App">
@@ -89,25 +86,26 @@ function App() {
           ></OutlinedInput>
         </div>
         <div id="shopping-cart-container">
-        <Button onClick={handleOpenModal}><ShoppingCartOutlinedIcon />{cartItems.length}</Button>
+          <Button onClick={handleOpenModal}>
+            <ShoppingCartOutlinedIcon />
+            {cartItems.length}
+          </Button>
         </div>
       </header>
-
-
-      {/* <Container className="cards-container"> */}
-        <Cart cartItems={cartItems} handleCloseModal={handleCloseModal} handleOpenModal={handleOpenModal} modalIsOpen={modalIsOpen}></Cart>
-        {items && filteredCards &&
-          <body className="App-body">
+      <Cart
+        cartItems={cartItems}
+        handleCloseModal={handleCloseModal}
+        handleOpenModal={handleOpenModal}
+        modalIsOpen={modalIsOpen}
+      ></Cart>
+      {items && filteredCards && (
+        <body className="App-body">
           {filteredCards.map((item, index) => {
-            return (
-              <EventCard item={item} onAdd={onAdd}></EventCard>
-            );
+            return <EventCard item={item} onAdd={onAdd}></EventCard>;
           })}
-          </body>
-          }
-      {/* </Container> */}
-      
-      </div>
+        </body>
+      )}
+    </div>
   );
 }
 
