@@ -86,8 +86,8 @@ function App() {
           ></OutlinedInput>
         </div>
         <div id="shopping-cart-container">
-          <Button onClick={handleOpenModal}>
-            <ShoppingCartOutlinedIcon id="shopping-cart-icon" />
+          <Button onClick={handleOpenModal} id="shopping-cart-button">
+            <ShoppingCartOutlinedIcon />
             {cartItems.length}
           </Button>
         </div>
