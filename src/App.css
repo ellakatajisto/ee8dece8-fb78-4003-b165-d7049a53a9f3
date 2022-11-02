@@ -1,0 +1,96 @@
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+  'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+  sans-serif;
+  
+}
+
+.App-header {
+  position: fixed;
+  width: 100%;
+  top: 0;
+  z-index: 999999;
+  background-color: #282c34;
+  display: flex;
+  flex-direction: row;
+  font-size: calc(10px + 2vmin);
+  color: white;
+  padding: 20px;
+}
+
+.App-body {
+  width: 80%;
+  background-color: black !important;
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.cards-container {
+  background-color:#f0fef4;
+  border: solid black 1px;
+  margin-top: 150px;
+  width: 100%;
+}
+
+.event-card {
+  color: teal !important;
+  background-color: #f0fef4 !important;
+  height: 430px;
+  width: 400px;
+  margin: 10px;
+  padding: 10px;
+  float: left;
+}
+
+#card-header {
+  height: 50px;
+}
+.App-link {
+  color: #61dafb;
+}
+
+#search-input {
+  background-color: #f0fef4 !important;
+  border-radius: 4px;
+  float: left;
+}
+
+#location-icon {
+  margin-bottom: -5px;
+  margin-right: 8px;
+  cursor: pointer;
+}
+
+
+#shopping-cart-container {
+  position: fixed;
+  right: 0;
+  margin-right: 20px;
+
+}
+
+#action-container {
+  align-items: right;
+  justify-content: right;
+}
+
+#add-to-cart {
+  cursor: pointer;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
