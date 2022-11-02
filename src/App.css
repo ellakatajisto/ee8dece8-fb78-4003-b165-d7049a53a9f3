@@ -18,7 +18,7 @@
   width: 100%;
   top: 0;
   z-index: 999999;
-  background-color: #282c34;
+  background-color: #f0f0f0;
   display: flex;
   flex-direction: row;
   font-size: calc(10px + 2vmin);
@@ -51,7 +51,7 @@
 }
 
 #search-input {
-  background-color: #f0fef4 !important;
+  background-color: white !important;
   border-radius: 4px;
   float: left;
   height: 10px;
@@ -82,6 +82,10 @@
 
 #card-content {
   height: 70px;
+}
+
+#shopping-cart-icon {
+  color:  teal ;
 }
 
 @keyframes App-logo-spin {
